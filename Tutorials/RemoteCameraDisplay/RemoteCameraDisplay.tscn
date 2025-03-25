@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://blx4qpul80o0g"]
+
+[ext_resource type="PackedScene" uid="uid://bmtig2uu2p4vi" path="res://Tutorials/RemoteCameraDisplay/Components/Roads/RoadStraight.tscn" id="1_umh0m"]
+[ext_resource type="PackedScene" uid="uid://codyys3sikh3v" path="res://Tutorials/RemoteCameraDisplay/Components/Cars/Car01.tscn" id="2_b2d8s"]
+
+[node name="RemoteCameraDisplay" type="Node3D"]
+
+[node name="Roads" type="Node3D" parent="."]
+
+[node name="RoadStraight" parent="Roads" instance=ExtResource("1_umh0m")]
+
+[node name="RoadStraight2" parent="Roads" instance=ExtResource("1_umh0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
+
+[node name="RoadStraight3" parent="Roads" instance=ExtResource("1_umh0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 40)
+
+[node name="RoadStraight4" parent="Roads" instance=ExtResource("1_umh0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60)
+
+[node name="RoadStraight5" parent="Roads" instance=ExtResource("1_umh0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 80)
+
+[node name="Car01" parent="." instance=ExtResource("2_b2d8s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 30)
+
+[node name="Cameras" type="Node3D" parent="Car01"]
+
+[node name="Camera3DFront" type="Camera3D" parent="Car01/Cameras"]
+transform = Transform3D(-0.994334, 0.00101235, 0.106298, 0, 0.999955, -0.00952327, -0.106303, -0.00946931, -0.994289, 0.374974, 1.34521, -0.188171)

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://codyys3sikh3v"]
+
+[ext_resource type="PackedScene" uid="uid://ch72lgn35p8l" path="res://Assets/free_car_lowpoly/FREE_CAR_01.fbx" id="1_yiem6"]
+[ext_resource type="Script" path="res://Tutorials/RemoteCameraDisplay/Components/Cars/Car01.cs" id="2_a6s4r"]
+[ext_resource type="PackedScene" uid="uid://cp1l3rohtd5b7" path="res://Tutorials/RemoteCameraDisplay/Components/StateMachine/StateMachine.tscn" id="3_4jn1c"]
+[ext_resource type="Script" path="res://Tutorials/RemoteCameraDisplay/Components/Cars/ForwardState.cs" id="4_wuq25"]
+[ext_resource type="Script" path="res://Tutorials/RemoteCameraDisplay/Components/Cars/ReverseState.cs" id="5_qlskt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pyex0"]
+transparency = 1
+cull_mode = 1
+albedo_color = Color(1, 1, 1, 0.0392157)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8kbm"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ow4gn"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_il7yj"]
+size = Vector3(2.055, 1.525, 3.21)
+
+[node name="Car01" instance=ExtResource("1_yiem6")]
+script = ExtResource("2_a6s4r")
+SteerLimit = 0.6
+
+[node name="car body" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -4.37114e-06, 100, 0, -100, -4.37114e-06, 0, 0, 0.0804537)
+
+[node name="windows" parent="car body" index="0"]
+transparency = 1.0
+surface_material_override/0 = SubResource("StandardMaterial3D_pyex0")
+
+[node name="win door r_001" parent="car body/door r" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_n8kbm")
+
+[node name="win door l_001" parent="car body/door l" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow4gn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04554, 0)
+shape = SubResource("BoxShape3D_il7yj")
+
+[node name="StateMachine" parent="." index="2" instance=ExtResource("3_4jn1c")]
+
+[node name="ForwardState" type="Node" parent="StateMachine" index="0" node_paths=PackedStringArray("Car")]
+script = ExtResource("4_wuq25")
+Car = NodePath("../..")
+
+[node name="ReverseState" type="Node" parent="StateMachine" index="1" node_paths=PackedStringArray("Car")]
+script = ExtResource("5_qlskt")
+Car = NodePath("../..")
+
+[node name="Wheel1" type="VehicleWheel3D" parent="." index="3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2.03988, 0.946071, 0.378456, 1.18192)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.18
+wheel_friction_slip = 1.0
+suspension_stiffness = 10.0
+
+[node name="Wheel2" type="VehicleWheel3D" parent="." index="4"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2.03988, 0.946071, 0.378456, -1.33312)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.18
+wheel_friction_slip = 1.0
+suspension_stiffness = 10.0
+
+[node name="Wheel3" type="VehicleWheel3D" parent="." index="5"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2.03988, -0.946071, 0.378456, 1.18192)
+use_as_traction = true
+use_as_steering = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.18
+wheel_friction_slip = 1.0
+suspension_stiffness = 10.0
+
+[node name="Wheel4" type="VehicleWheel3D" parent="." index="6"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2.03988, -0.946071, 0.378456, -1.33312)
+use_as_traction = true
+wheel_roll_influence = 1.0
+wheel_radius = 0.18
+wheel_friction_slip = 1.0
+suspension_stiffness = 10.0
