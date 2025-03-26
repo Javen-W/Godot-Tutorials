@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-namespace CSE849BPSPrototype
+namespace RemoteCameraDisplay
 {
 	public partial class Car01 : VehicleBody3D
 	{

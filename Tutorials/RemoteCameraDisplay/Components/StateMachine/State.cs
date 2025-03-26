@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Collections.Generic;
 
-namespace CSE849BPSPrototype
+namespace RemoteCameraDisplay
 {
     [GlobalClass]
     public partial class State : Node

@@ -2,7 +2,7 @@ using Godot;
 using Godot.Collections;
 using System;
 
-namespace CSE849BPSPrototype
+namespace RemoteCameraDisplay
 {
     public partial class ReverseState : State
     {
